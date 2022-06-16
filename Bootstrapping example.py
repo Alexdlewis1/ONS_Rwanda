@@ -1,3 +1,7 @@
+##################################################################
+# Basic Bootstrapping example by EA
+##################################################################
+
 # Import packages
 import numpy as np
 import pandas as pd
@@ -33,7 +37,8 @@ bootstrapped_population = np.empty(number_of_bootstraps, dtype=int)
 
 for i in range(number_of_bootstraps):
     # In each district, sample once for every EA replacing values each time
-    sample = dummy_ea_populations.groupby("District")["Population"].sample(frac=1.0, replace=True, random_state=i)
+    sample = dummy_ea_populations.groupby("District")["Population"].sample(frac=1.0, 
+                                                       replace=True, random_state=i)
     
     # sum this sample to obtain a total population value
     sample_population = sum(sample)
@@ -55,3 +60,7 @@ confidence_interval = np.percentile(bootstrapped_population, [2.5, 97.5])
 print("2.5 and 97.5% Confidence interval: ", confidence_interval)
 
 
+
+    
+    
+    
